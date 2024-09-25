@@ -4,7 +4,6 @@
 #include <Adafruit_NeoPixel.h>
 #include "interfaces/IAnimation.h"
 
-typedef enum appMode{CLOCK, ANIMATION};
 
 class App{
     public:

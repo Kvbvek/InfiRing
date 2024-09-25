@@ -1,8 +1,5 @@
 #include "acceleratingDot.h"
-
-const int num_leds = 60;
-const int max_delay = 100;
-const int min_delay = 10;
+#include <TimerOne.h>
 
 void AcceleratingDot::acceleratingDot(uint32_t color){
   int delay_time = max_delay;
@@ -26,9 +23,16 @@ void AcceleratingDot::acceleratingDot(uint32_t color){
 }
 
 void AcceleratingDot::display(){
-  acceleratingDot(leds->Color(212,125,126));
+  AcceleratingDot::acceleratingDot(leds->Color(212,125,126));
 }
 
 AcceleratingDot::AcceleratingDot(Adafruit_NeoPixel* leds_){
   this->leds = leds_;
+  this->delay_time = 50;
+  this->increasing_speed = true;
+  // this->currLed = 0;
+  // this->currTime = 0;
+  // this->ISR_display = display;
+  // Timer1.initialize(delay_time*1000);
+  // Timer1.attachInterrupt(ISR_display);
 };

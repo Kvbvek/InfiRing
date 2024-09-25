@@ -1,7 +1,8 @@
 #include "app.h"
 #include "interfaces/IAnimation.h"
-#include "animations/acceleratingDot.h"
-#include "animations/pulsingColor.h"
+#include "animations/animations.h"
+
+#include "animations/test.h"
 
 #define LED_PIN    5
 #define LED_COUNT 60
@@ -11,7 +12,6 @@
 #endif
 
 App::App(){
-    // clock = new Clock();
     leds = new Adafruit_NeoPixel(LED_COUNT, LED_PIN, NEO_GRB + NEO_KHZ800);
     // Argument 3 = Pixel type flags, add together as needed:
     //   NEO_KHZ800  800 KHz bitstream (most NeoPixel products w/WS2812 LEDs)
@@ -26,11 +26,11 @@ void App::init(){
     leds->begin();
     leds->clear();         
     leds->show();
-    leds->setBrightness(150);  //(max = 255)
+    leds->setBrightness(255);  //(max = 255)
     this->animation = nullptr;
 }
 
 void App::update(){
-    animation = new PulsingColor(leds);
+    animation = new AcceleratingDot(leds);
     animation->display();
 }
